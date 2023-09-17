@@ -21,14 +21,16 @@ public class SingleLinkedList {
             this.quantity++;
         }
         else{
-            Node current = root;
-            Node lastNode = root.getNext();
-            while(lastNode!= null){
-                current = lastNode;
-                lastNode=current.getNext();
+            if(quantity!=size) {
+                Node current = root;
+                Node lastNode = root.getNext();
+                while (lastNode != null) {
+                    current = lastNode;
+                    lastNode = current.getNext();
+                }
+                current.setNext(new Node(value));
+                quantity++;
             }
-            current.setNext(new Node(value));
-            quantity++;
         }
     }
 
@@ -39,5 +41,21 @@ public class SingleLinkedList {
             System.out.println(node);
             node = node.getNext();
         }
+    }
+
+    public void reverse(){
+        Node current = root;
+        Node next = root.getNext();
+        Node last = next.getNext();
+        while(next!=null){
+            next.setNext(current);
+            current=next;
+            next= last;
+            if(next== null){
+                break;
+            }
+            last = next.getNext();
+        }
+        root = current;
     }
 }
