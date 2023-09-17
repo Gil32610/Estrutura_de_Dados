@@ -11,6 +11,7 @@ public class main {
         }
         list.printLinkedList();
         list.reverse();
+        System.out.println("-".repeat(20));
         list.printLinkedList();
 
     }

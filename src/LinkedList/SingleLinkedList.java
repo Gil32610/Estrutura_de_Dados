@@ -47,7 +47,7 @@ public class SingleLinkedList {
         Node current = root;
         Node next = root.getNext();
         Node last = next.getNext();
-        while(next!=null){
+        while(true){
             next.setNext(current);
             current=next;
             next= last;
