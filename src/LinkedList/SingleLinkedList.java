@@ -7,12 +7,12 @@ public class SingleLinkedList {
 
     private Node root;
 
-    private int size;
+
 
     private int quantity;
 
-    public SingleLinkedList(int size) {
-        this.size = size;
+    public Node getRoot(){
+        return root;
     }
 
     public void insertNode(int value){
@@ -21,7 +21,7 @@ public class SingleLinkedList {
             this.quantity++;
         }
         else{
-            if(quantity!=size) {
+
                 Node current = root;
                 Node lastNode = root.getNext();
                 while (lastNode != null) {
@@ -30,17 +30,19 @@ public class SingleLinkedList {
                 }
                 current.setNext(new Node(value));
                 quantity++;
-            }
+
         }
     }
 
 
     public void printLinkedList(){
         Node node = root;
-        for (int i = 0; i < size ; i++) {
-            System.out.println(node);
-            node = node.getNext();
-        }
+      while(node!=null){
+          System.out.println(node);
+          node = node.getNext();
+      }
+
+
     }
 
     public void reverse(){
@@ -56,6 +58,22 @@ public class SingleLinkedList {
             }
             last = next.getNext();
         }
+        root.setNext(null);
         root = current;
+    }
+
+    public Integer[] toArray(){
+        Node node = root;
+        int size = 0;
+        while(node!= null){
+            size++;
+        }
+        node = root;
+        Integer[] array = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = node.getValue();
+            node = node.getNext();
+        }
+        return array;
     }
 }
